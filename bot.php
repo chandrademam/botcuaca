@@ -53,6 +53,30 @@ function cuaca($keyword) {
     return $result;
 }
 #-------------------------[Function]-------------------------#
+#-------------------------[Function]-------------------------#
+function shalat($keyword) {
+    $uri = "https://time.siswadi.com/pray/" . $keyword;
+
+    $response = Unirest\Request::get("$uri");
+
+    $json = json_decode($response->raw_body, true);
+    $result = "Jadwal Shalat Sekitar ";
+	$result .= $json['location']['address'];
+	$result .= "\nTanggal : ";
+	$result .= $json['time']['date'];
+	$result .= "\n\nShubuh : ";
+	$result .= $json['data']['Fajr'];
+	$result .= "\nDzuhur : ";
+	$result .= $json['data']['Dhuhr'];
+	$result .= "\nAshar : ";
+	$result .= $json['data']['Asr'];
+	$result .= "\nMaghrib : ";
+	$result .= $json['data']['Maghrib'];
+	$result .= "\nIsya : ";
+	$result .= $json['data']['Isha'];
+    return $result;
+}
+#-------------------------[Function]-------------------------#
 
 # require_once('./src/function/search-1.php');
 # require_once('./src/function/download.php');
@@ -62,7 +86,7 @@ function cuaca($keyword) {
 
 //show menu, saat join dan command /menu
 if ($type == 'join' || $command == '/menu') {
-    $text = "Halo Kak ^_^\nAku Bot Prediksi Cuaca, Kamu bisa mengetahui prediksi cuaca di daerah kamu sesuai dengan sumber BMKG";
+    $text = "Halo Kak ^_^\nAku Bot Prediksi Cuaca & jadwal shalat , Kamu bisa mengetahui prediksi cuaca di daerah kamu sesuai dengan sumber BMKG & silahkan ketik\n\n/shalat <nama tempat>\n\nnanti aku bakalan kasih tahu jam berapa waktunya shalat ^_^";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -76,7 +100,7 @@ if ($type == 'join' || $command == '/menu') {
 
 //pesan bergambar
 if($message['type']=='text') {
-	    if ($command == '/cuaca') {
+	    if ($command == '/cuaca''/shalat') {
 
         $result = cuaca($options);
         $balas = array(
