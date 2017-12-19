@@ -100,9 +100,20 @@ if ($type == 'join' || $command == '/menu') {
 
 //pesan bergambar
 if($message['type']=='text') {
-	    if ($command == '/cuaca''/shalat') {
+	    if ($command == '/cuaca') {
 
         $result = cuaca($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+ //pesan bergambar
+if($message['type']=='text') {
+	    if ($command == '/shalat') {
+
+        $result = shalat($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
