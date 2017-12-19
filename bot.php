@@ -109,7 +109,6 @@ if($message['type']=='text') {
                 array(
                     'type' => 'text',
                     'text' => $result
- //pesan bergambar
 if($message['type']=='text') {
 	    if ($command == '/shalat') {
 
