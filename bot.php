@@ -14,7 +14,6 @@ $channelSecret = '58bb7c1588281e05c0d4893373911d4c';//sesuaikan
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
-
 //var_dump($client->parseEvents());
 
 
