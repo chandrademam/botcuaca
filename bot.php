@@ -14,6 +14,31 @@ $channelSecret = '58bb7c1588281e05c0d4893373911d4c';//sesuaikan
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
+
+//var_dump($client->parseEvents());
+
+
+
+//$_SESSION['userId']=$client->parseEvents()[0]['source']['userId'];
+
+/*
+{
+  "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+  "type": "message",
+  "timestamp": 1462629479859,
+  "source": {
+    "type": "user",
+    "userId": "U206d25c2ea6bd87c17655609a1c37cb8"
+  },
+  "message": {
+    "id": "325708",
+    "type": "text",
+    "text": "Hello, world"
+  }
+}
+*/
+
+
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $groupId 	= $client->parseEvents()[0]['source']['groupId'];
 $replyToken = $client->parseEvents()[0]['replyToken'];
@@ -108,8 +133,11 @@ if($message['type']=='text') {
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => $result
-if($message['type']=='text') {
+                    'text' => $result	      
+                )
+            )
+        );
+    }
 	    if ($command == '/shalat') {
 
         $result = shalat($options);
@@ -119,7 +147,7 @@ if($message['type']=='text') {
                 array(
                     'type' => 'text',
                     'text' => $result
-                )
+                )		  
             )
         );
     }
@@ -136,7 +164,7 @@ if($message['type']=='text') {
 									)
 							)
 						);
-						
+							
 }
 if (isset($balas)) {
     $result = json_encode($balas);
